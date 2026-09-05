@@ -1,0 +1,55 @@
+@SchoolPortal.API_HostAddress = http://localhost:5058
+
+# Development-only tenant selector — set to a real SCHOOLS.ID from the SchoolSaaS DB.
+@schoolId = 00000000-0000-0000-0000-000000000000
+
+### Create a student
+POST {{SchoolPortal.API_HostAddress}}/api/v1/students
+Content-Type: application/json
+X-School-Id: {{schoolId}}
+
+{
+  "admissionNumber": "ADM-2026-001",
+  "firstName": "Ayesha",
+  "lastName": "Khan",
+  "dateOfBirth": "2015-04-12",
+  "admissionDate": "2026-04-01",
+  "gender": "Female"
+}
+
+### List students
+GET {{SchoolPortal.API_HostAddress}}/api/v1/students?page=1&pageSize=25
+X-School-Id: {{schoolId}}
+
+### Get one student
+GET {{SchoolPortal.API_HostAddress}}/api/v1/students/REPLACE-WITH-ID
+X-School-Id: {{schoolId}}
+
+### Update a student
+PUT {{SchoolPortal.API_HostAddress}}/api/v1/students/REPLACE-WITH-ID
+Content-Type: application/json
+X-School-Id: {{schoolId}}
+
+{
+  "firstName": "Ayesha",
+  "lastName": "Khan-Updated",
+  "rollNumber": "5"
+}
+
+### Register a user (admin creates + invites into the current school)
+POST {{SchoolPortal.API_HostAddress}}/api/v1/users
+Content-Type: application/json
+X-School-Id: {{schoolId}}
+
+{
+  "email": "ali.raza@example.com",
+  "fullName": "Ali Raza",
+  "password": "S3cure-pass",
+  "roleName": "Teacher",
+  "phoneNumber": "+92-300-0000000",
+  "preferredLanguage": "en"
+}
+
+### Get a user (must have a membership in the current tenant)
+GET {{SchoolPortal.API_HostAddress}}/api/v1/users/REPLACE-WITH-ID
+X-School-Id: {{schoolId}}

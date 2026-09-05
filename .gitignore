@@ -1,0 +1,27 @@
+# Build output
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+artifacts/
+
+# Database-First scaffold scratch area (regenerated; never committed)
+src/SchoolPortal.Persistence/_scaffold/
+
+# IDE / user
+.vs/
+.idea/
+*.user
+*.suo
+*.userprefs
+*.DotSettings.user
+
+# Test / coverage
+[Tt]est[Rr]esults/
+coverage*.json
+coverage*.xml
+*.trx
+
+# OS
+Thumbs.db
+.DS_Store
